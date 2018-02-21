@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div><span class="col-lg-1 col-offset-6 centered align middle">Marci's memory game</span></div>
+
+{% if no_level_selected == 0 %}
+<div class="col-lg-2 col-offset-6 centered" style="background: #485F6E"><span class="col-lg-1 col-offset-6 centered align middle">The rules for the game are fairly simple: to win, you have to find all the pairs!
+To play, first you have to specify how many pairs you want to find in your game.
+    Select a game mode below, then click the "Let's play!" button!</span></div>
+{% else %}
+<div><span class="col-lg-1 col-offset-6 centered align-middle">No level selected. Please select a level!</span></div>
+
+{% endif %}
+
+<form id="game_form" method="post" action="{{ url_for('gameplay') }}">
+    <select name="pairs_selected" id="pairs_selected" required>
+        <option disabled selected value>Select a game mode</option>
+        <option value="2">2 pairs</option>
+        <option value="3">3 pairs</option>
+        <option value="4">4 pairs</option>
+        <option value="5">5 pairs</option>
+        <option value="6">6 pairs</option>
+        <option value="7">7 pairs</option>
+        <option value="8">8 pairs</option>
+        <option value="9">9 pairs</option>
+        <option value="10">10 pairs</option>
+
+    </select>
+    <button type="submit">Let's Play!</button>
+</form>
+
+{% endblock %}
